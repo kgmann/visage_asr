@@ -2,7 +2,7 @@
 storage/
 
 # Speech recognition model's binary files directory
-app/models/data/
+#app/models/data/
 
 # Vscode config files 
 .vscode/*
