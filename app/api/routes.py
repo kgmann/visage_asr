@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from app.api import bp
 from app.api.models import STTInputItem, STTOutputItem
 from app.api.errors import error_response, bad_request
+from app.api.recognizer import SpeechRecognizer
 
 @bp.route('/tts', methods = ['POST'])
 def speech_to_text():
@@ -28,6 +29,9 @@ def speech_to_text():
 
     filename = os.path.basename(filepath)
 
+    asr = SpeechRecognizer()
+    result = asr.recognize(filepath)
+    return STTOutputItem.to_dict(result)
     # Return response
-    return STTOutputItem.to_dict('File saved')
+    #return STTOutputItem.to_dict('File saved')
 
