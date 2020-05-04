@@ -1,8 +1,11 @@
-# Vscode config files 
-.vscode/*
-
 # Storage directory and subdirectories
 storage/
+
+# Speech recognition model's binary files directory
+app/models/data/
+
+# Vscode config files 
+.vscode/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
