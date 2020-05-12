@@ -1,7 +1,6 @@
 import os
 
 from flask import request, jsonify, current_app
-from werkzeug.utils import secure_filename
 
 from app.api import bp
 from app.api.models import STTInputItem, STTOutputItem
