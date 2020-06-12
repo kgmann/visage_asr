@@ -30,9 +30,13 @@ file information sample (we used the `sox` utility to dump audio data informatio
 ### Request Parameters
 
 `base url: http://domain_name:8080/api/v1/tts`
+
 `method: POST`
+
 `header: content-type: application/json`
+
 `body:`
+
 `"config":` Dictionnary of configurations (file extension, fequence rates etc...). For the moment only wav files are supported and the frequence is fixed so we didn't implement config yet.
 
 `"audio":` Dictionnary which contain either "content "or "uri". Only one of them but not both.
