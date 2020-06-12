@@ -5,12 +5,12 @@ import base64
 from flask import current_app
 from werkzeug.utils import secure_filename
 
-def convert_and_save(b64_string, filename=None):
+def convert_and_save(b64_string, extension="wav", filename=None):
     """
     Convert file from base64 to audio and save
     """
     if filename is None:
-        filename = "".join(str(time.time()).split('.')) + ".wav"
+        filename = "".join(str(time.time()).split('.')) + "." + extension
     
     filepath = os.path.join(current_app.config.get('UPLOAD_FOLDER'), filename)    
     with open(filepath, "wb") as fh:
@@ -32,3 +32,7 @@ def save_audio(request_file, filename=None):
 def allowed_audio_file(filename):
     ALLOWED_EXTENSIONS = {'wav'}
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def remove_output_file(output_file_path):
+    if os.path.isfile(output_file_path):
+        os.remove(output_file_path)

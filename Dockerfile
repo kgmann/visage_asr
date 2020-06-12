@@ -2,13 +2,14 @@ FROM pykaldi/pykaldi:latest
 
 LABEL   maintainer="Germann ATAKPA <lucatakpa@gmail.com>" \
         version="1.0" \
-        description="Speech recogntion API for Fon"
+        description="Speech recognition API for Fon"
 
 WORKDIR /visage_asr
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN apt update && apt install -y libsox-fmt-all \
+    && pip install -r requirements.txt
 
 EXPOSE 8080
 
