@@ -1,6 +1,5 @@
 # Storage directory and subdirectories
-storage/
-
+#storage/
 # Speech recognition model's binary files directory
 #app/models/data/
 
