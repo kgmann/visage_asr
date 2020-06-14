@@ -11,8 +11,9 @@ from kaldi.util.table import SequentialMatrixReader, SequentialWaveReader
 
 class SpeechRecognizer:
     """
-    This class create a recognizer and give the
+    This class creates a recognizer and give the
     possibility to make speech recognition from wav files.
+    This class assumes that the audio files already have the appropriate format.
     """
     def __init__(self, base_path=None, model_path=None, graph_path=None, symbols_path=None):
         # Declaring main variables
@@ -42,6 +43,9 @@ class SpeechRecognizer:
         return self.asr
 
     def recognize(self, filepath=None):
+        """
+        Make a speech recognition given an audio file path.
+        """
         result = None
 
         # Create a tmp wav.scp file
@@ -49,7 +53,6 @@ class SpeechRecognizer:
         with open(wav_scp_path, "w") as f:
             f.write("unknown %s" % filepath)
         # Decode
-
         for key, wav in SequentialWaveReader("scp:%s" % wav_scp_path):
             feats = self.feat_pipeline(wav)
             out = self.asr.decode(feats)
